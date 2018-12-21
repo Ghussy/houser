@@ -6,7 +6,7 @@ const pc = require('./controller')
 
 const app = express();
 
-const {CONNECTION_STRING, PORT} = process.env
+const {CONNECTION_STRING, SERVER_PORT} = process.env
 
 massive(CONNECTION_STRING).then((dbInstance) => {
     app.set('db', dbInstance)
@@ -24,9 +24,9 @@ app.get('/api/houses', pc.getAll)
 
 //--------------------------------------- test below-------------
 
-// app.listen(4000, ( ) => console.log(`${PORT} ducks marching in rome`));
+// app.listen(4000, ( ) => console.log(`${SERVER_PORT} ducks marching in rome`));
 
 massive(CONNECTION_STRING).then(connection => {
     app.set('db', connection)
-    app.listen(PORT, () => console.log(`listening on port ${PORT}`))
+    app.listen(SERVER_PORT, () => console.log(`listening on port ${SERVER_PORT}`))
 }).catch(err => console.log(err))
