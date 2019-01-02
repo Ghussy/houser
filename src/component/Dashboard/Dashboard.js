@@ -9,15 +9,24 @@ export default class Dashboard extends Component {
         this.state = {
             houses: []
         }
+        this.delete=this.delete.bind(this)
+        //use this to bind or use an arrow function
     }
 
     componentDidMount() {
         axios.get("/api/houses").then(res => {
           this.setState({ houses: res.data });
-          console.log('component mounted');
-          console.log(res.data)
+       
         });
       }
+
+      delete(id) {
+        
+      axios.delete(`/api/delete/${id}`).then(res =>{
+          this.setState({ houses: res.data });
+        console.log(res.data)
+      })
+  }
 
     // showHouses(){
     //   let displayHouses = this.state.houses.map((val, i, arr) => {
@@ -26,7 +35,7 @@ export default class Dashboard extends Component {
     // }
 
     render() {
-            console.log(this.state);
+       
     let houseList = this.state.houses.map((house, i)=> {
         
       return (
@@ -40,6 +49,7 @@ export default class Dashboard extends Component {
           rent={house.rent}
           property={house.property}
           img_url={house.img_url}
+          delete = {this.delete}
         //   deleteItem={() => this.deleteItem(house.house_id)}
         />
       );

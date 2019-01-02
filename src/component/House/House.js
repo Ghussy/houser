@@ -1,19 +1,25 @@
 import React from 'react';
+// import axios from 'axios'
 
 
-const house = props => {
-   let {key, id, address, city, zip, mortgage, rent, property, img_url} = props;
-    
+function house (props) {
 
 
-}
-/* <>
-    <div>
-       {/* <img src={} alt="house" /> */
-//        <p></p>
-//     </div>
-//     <button>Delete</button>
-// </>  
-// ); */}
+    return(
+      
+ <div>
+     <img src={props.img_url} />
+    <p>{props.address}</p>
+    <p>{props.city}</p>
+    <p>{props.zip}</p>
+    <p>{props.mortgage}</p>
+    <p>{props.rent}</p>
+    <p>{props.propterty}</p>
+    <button onClick={e => props.delete(props.id) }>Delete</button>
+    </div> )
+;}
 
 export default house;
+
+    
+

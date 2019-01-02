@@ -14,12 +14,14 @@ massive(CONNECTION_STRING).then((dbInstance) => {
 } )
 
 
-
 app.use(express.json())
 
 //----------------- ENDPOINTS -----------------------------------//
 app.get('/api/houses', pc.getAll)
 
+app.post('/api/addhouse', pc.createHouse)
+
+app.delete('/api/delete/:id', pc.deleteHouse)
 
 
 //--------------------------------------- test below-------------
